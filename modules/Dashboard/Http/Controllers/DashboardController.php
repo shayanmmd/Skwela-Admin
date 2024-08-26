@@ -8,9 +8,4 @@ class DashboardController
     {
         return view('DashboardViews::home');
     }
-
-    public function navlinks()
-    {
-        return view('DashboardViews::navlinks');
-    }
 }
