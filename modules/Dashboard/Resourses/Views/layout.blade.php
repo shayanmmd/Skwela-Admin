@@ -27,7 +27,7 @@
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-dark">
             <!-- Left navbar links -->
-          
+
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
@@ -148,6 +148,15 @@
                         <i class="fas fa-th-large"></i>
                     </a>
                 </li>
+
+                <form method="post" action="{{route('logout')}}">
+                    @csrf
+                    <li class="nav-item">
+                        <button type="submit" class="nav-link">
+                            <i class="fas fa-home"></i>
+                        </button>
+                    </li>
+                </form>
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -159,7 +168,7 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            
+
             <!-- /.content-header -->
 
             <!-- Main content -->
@@ -175,7 +184,7 @@
         <!-- /.control-sidebar -->
 
         <!-- Main Footer -->
-       
+
     </div>
     <!-- ./wrapper -->
 

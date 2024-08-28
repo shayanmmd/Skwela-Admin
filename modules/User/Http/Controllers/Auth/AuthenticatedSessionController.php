@@ -15,7 +15,7 @@ class AuthenticatedSessionController extends Controller
      * Display the login view.
      */
     public function create(): View
-    {
+    {        
         return view('UserViews::auth.login');
     }
 
@@ -24,10 +24,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-
         $request->authenticate();
-
-
+        
         $request->session()->regenerate();
 
         return redirect('/');
@@ -38,6 +36,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        dd('hi');
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
