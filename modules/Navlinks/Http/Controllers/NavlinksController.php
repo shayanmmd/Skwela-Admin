@@ -29,12 +29,12 @@ class NavlinksController
         }
     }
 
-    public function delete(Request $request)
+    public function delete()
     {
         try {
-            $id = json_decode($request->getContent(), true);
-
-            $res = $this->navlinksRepository->delete($id);
+            $payload = request()->all();
+            // return $payload;
+            $res = $this->navlinksRepository->delete($payload['id']);
 
             if ($res == 0)
                 return response()->json(['success' => false, 'msg' => 'it has an error']);
@@ -48,7 +48,6 @@ class NavlinksController
     public function add()
     {
         try {
-
             $payload = request()->all();
 
             if ($payload['name'] === null)
