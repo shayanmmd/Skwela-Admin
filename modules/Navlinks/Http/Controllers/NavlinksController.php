@@ -3,7 +3,6 @@
 namespace Navlinks\Http\Controllers;
 
 use Navlinks\Repository\NavlinksRepository;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class NavlinksController
@@ -33,7 +32,7 @@ class NavlinksController
     {
         try {
             $payload = request()->all();
-            // return $payload;
+
             $res = $this->navlinksRepository->delete($payload['id']);
 
             if ($res == 0)
