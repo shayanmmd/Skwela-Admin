@@ -1,8 +1,10 @@
 <?php
 
+
 use User\Http\Controllers\Auth\AuthenticatedSessionController;
 use User\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::middleware(['guest', 'web'])->group(function () {
 

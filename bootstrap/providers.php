@@ -8,5 +8,7 @@ return [
     App\Providers\AppServiceProvider::class,
     DashboardProvider::class,
     NavlinksProvider::class,
-    UserProvider::class
+    UserProvider::class,
+    Spatie\Permission\PermissionServiceProvider::class,
+
 ];

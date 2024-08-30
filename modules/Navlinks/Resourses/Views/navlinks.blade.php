@@ -195,9 +195,10 @@ Edit
         let name = $('#name').val();
         let parentId = $('#parentId').val();
 
-        newNavlink = {
+        let newNavlink = {
             name: name,
-            parentId: parentId
+            parentId: parentId,
+            _token: '{{csrf_token()}}'
         }
 
         $isValid = checkValidation(name, parentId);
@@ -226,9 +227,10 @@ Edit
         let parentId = $('#parentId-edit').val();
 
         newNavlink = {
-            id:id,
+            id: id,
             name: name,
-            parentId: parentId
+            parentId: parentId,
+            _token: '{{csrf_token()}}'
         }
 
         $isValid = checkValidation(name, parentId);
@@ -277,11 +279,14 @@ Edit
     function deleteItem(id) {
         if (!confirm('are you sure you wanna delete this item?'))
             return;
+        
         $.ajax({
-            type: "post",
-            contentType: "application/json; charset=utf-8",
+            type: "get",
             url: "{{route('navlinks-delete')}}",
-            data: id,
+            contentType: 'application/json',
+            data: {
+                id: id
+            },
             dataType: "json",
             success: function(response) {
                 if (response.success === true)

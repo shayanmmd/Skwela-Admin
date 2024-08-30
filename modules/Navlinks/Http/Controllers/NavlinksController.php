@@ -3,7 +3,6 @@
 namespace Navlinks\Http\Controllers;
 
 use Navlinks\Repository\NavlinksRepository;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class NavlinksController
@@ -29,12 +28,12 @@ class NavlinksController
         }
     }
 
-    public function delete(Request $request)
+    public function delete()
     {
         try {
-            $id = json_decode($request->getContent(), true);
+            $payload = request()->all();
 
-            $res = $this->navlinksRepository->delete($id);
+            $res = $this->navlinksRepository->delete($payload['id']);
 
             if ($res == 0)
                 return response()->json(['success' => false, 'msg' => 'it has an error']);
@@ -48,7 +47,6 @@ class NavlinksController
     public function add()
     {
         try {
-
             $payload = request()->all();
 
             if ($payload['name'] === null)
