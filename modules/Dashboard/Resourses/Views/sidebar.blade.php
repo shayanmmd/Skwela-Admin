@@ -55,6 +55,17 @@
                     </ul>
                 </li>
 
+                <li class="nav-item menu-open">
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('permissions-page')}}" class="nav-link">
+                                <i class="fas fa-address-card nav-icon"></i>
+                                <p>Permissions</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
 
             </ul>
         </nav>

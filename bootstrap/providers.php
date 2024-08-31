@@ -2,6 +2,7 @@
 
 use Dashboard\Providers\DashboardProvider;
 use Navlinks\Providers\NavlinksProvider;
+use Permissions\Providers\PermissionsProvider;
 use User\Providers\UserProvider;
 
 return [
@@ -9,6 +10,6 @@ return [
     DashboardProvider::class,
     NavlinksProvider::class,
     UserProvider::class,
-    Spatie\Permission\PermissionServiceProvider::class,
-
+    PermissionsProvider::class,
+    Spatie\Permission\PermissionServiceProvider::class
 ];

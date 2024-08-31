@@ -26,6 +26,7 @@
             "Dashboard\\": "modules/Dashboard/",
             "Navlinks\\": "modules/Navlinks/",
             "User\\": "modules/User/",
+            "Permissions\\": "modules/Permissions/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
