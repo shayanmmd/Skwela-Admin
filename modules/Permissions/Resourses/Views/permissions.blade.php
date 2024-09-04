@@ -123,7 +123,7 @@ Add a role
             <input id="name-role" class="form-control" name="name" type="text" placeholder="Name...">
         </div>
 
-        <div class="container" id="all-permissions"></div>
+        <div class="container m-2" id="all-permissions"></div>
 
 
         <div class="row mt-2">
@@ -202,9 +202,11 @@ Add a permission
             dataType: "json",
             success: function(response) {
 
+                if (!$('#all-permissions').empty())
+                    return;
+
                 response.map(function(permission) {
-                    // <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    let child = $('<div><input type="checkbox" class="form-check-input" id="exampleCheck1">' + permission.name + ' </div>');
+                    let child = $('<div><input type="checkbox" class="form-check-input" id="permission-number-' + permission.id + '"><label for="permission-number-' + permission.id + '">' + permission.name + '</label></div>');
                     $('#all-permissions').append(child);
                 });
 
@@ -217,6 +219,12 @@ Add a permission
     function handleAddRole() {
 
         let name = $('#name-role').val();
+        let permissions = [];
+
+        $('#all-permissions').children().map((index, permission) => {
+            if (permission.childNodes[0].checked)
+                permissions.push(permission.childNodes[1].textContent);
+        });
 
         if (name.length < 3) {
             alert('input must be more than 3 characters');
@@ -225,6 +233,7 @@ Add a permission
 
         let newRole = {
             name: name,
+            permissions: permissions,
             _token: '{{csrf_token()}}'
         }
 
@@ -263,6 +272,7 @@ Add a permission
             data: JSON.stringify(newRole),
             dataType: "json",
             success: function(response) {
+                console.log(response);
                 alert(response.msg);
                 if (response.success)
                     location.reload();

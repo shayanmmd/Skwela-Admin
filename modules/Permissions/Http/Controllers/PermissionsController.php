@@ -9,9 +9,9 @@ class PermissionsController
 {
 
     public function index()
-    {        
-        $roles = Role::all();        
-        
+    {
+        $roles = Role::all();
+
         return view('PermissionsViews::permissions', [
             'roles' => $roles
         ]);
@@ -19,17 +19,18 @@ class PermissionsController
 
     public function addRole()
     {
-        $name = request()->all()['name'];
+        $payload = request()->all();
+        
+        $name = $payload['name'];
+        $permissions = $payload['permissions'];
 
         $role = Role::create([
             'name' => $name
         ]);
 
-        $role->givePermissionTo(['add me']);
+        $role->givePermissionTo($permissions);
 
-        return response()->json([
-            'asd' => 'asda'
-        ]);
+        return response()->json(['success' => true, 'msg' => 'it it made']);
     }
 
     public function addPermission()
@@ -49,5 +50,4 @@ class PermissionsController
 
         return response()->json($permissions);
     }
-
 }

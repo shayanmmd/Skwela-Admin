@@ -12,7 +12,7 @@ class NavlinksController
         private NavlinksRepository $navlinksRepository
     ) {}
 
-    public function showNavlinksView()
+    public function index()
     {
         try {
             $navlinks = $this->navlinksRepository->all();

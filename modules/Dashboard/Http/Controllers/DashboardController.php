@@ -4,7 +4,7 @@ namespace Dashboard\Http\Controllers;
 
 class DashboardController
 {
-    public function home()
+    public function index()
     {
         return view('DashboardViews::home');
     }
