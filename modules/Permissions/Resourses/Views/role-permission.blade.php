@@ -6,11 +6,11 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Permissions</h1>
+                <h1 class="m-0">Roles And Permissions</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{route('permissions-page')}}">Permissions</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('role-permission-page')}}">Permissions</a></li>
                     <li class="breadcrumb-item active">SkwelaAdmin</li>
                 </ol>
             </div>
@@ -80,8 +80,7 @@
                                                 @endforeach
                                             </ul>
                                         </td>
-                                        <td class="d-flex justify-content-center">
-                                            <button onclick="showEdit(`{{$role->id}}`)" title="edit" class=" btn btn-sm btn-default"><i class="fas fa-pen"></i></button>
+                                        <td class="d-flex justify-content-center">                                            
                                             <button id="delete-{{$role->id}}" onclick="deleteItem(`{{$role->id}}`)" title="delete" class=" btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                                         </td>
                                     </tr>
@@ -115,7 +114,7 @@ Add a role
 
 @slot('body')
 
-<form onsubmit="event.preventDefault();handleAddRole()">
+<form onsubmit="event.preventDefault();addRole()">
 
     <div class="container">
 
@@ -158,7 +157,7 @@ Add a permission
 
 @slot('body')
 
-<form onsubmit="event.preventDefault();handleAddPermission()">
+<form onsubmit="event.preventDefault();addPermission()">
 
     <div class="container">
 
@@ -216,7 +215,7 @@ Add a permission
 
     }
 
-    function handleAddRole() {
+    function addRole() {
 
         let name = $('#name-role').val();
         let permissions = [];
@@ -244,14 +243,14 @@ Add a permission
             data: JSON.stringify(newRole),
             dataType: "json",
             success: function(response) {
-                alert(response);
+                alert(response.msg);
                 if (response.success)
                     location.reload();
             }
         });
     }
 
-    function handleAddPermission() {
+    function addPermission() {
 
         let name = $('#name-permission').val();
 
@@ -273,6 +272,24 @@ Add a permission
             dataType: "json",
             success: function(response) {
                 console.log(response);
+                alert(response.msg);
+                if (response.success)
+                    location.reload();
+            }
+        });
+    }
+
+    function deleteItem(id) {
+
+        let data = {
+            id:id
+        };
+
+        $.ajax({
+            type: "get",
+            url: "{{route('delete-role')}}?id=" + id,
+            dataType: "json",
+            success: function(response) {
                 alert(response.msg);
                 if (response.success)
                     location.reload();
