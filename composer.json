@@ -27,6 +27,7 @@
             "Navlinks\\": "modules/Navlinks/",
             "User\\": "modules/User/",
             "Permissions\\": "modules/Permissions/",
+            "Courses\\": "modules/Courses/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

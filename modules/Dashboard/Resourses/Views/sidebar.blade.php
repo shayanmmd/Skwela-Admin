@@ -66,6 +66,17 @@
                     </ul>
                 </li>
 
+                <li class="nav-item menu-open">
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('courses-page')}}" class="nav-link">
+                                <i class="fa fa-book nav-icon"></i>
+                                <p>Courses</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
 
             </ul>
         </nav>
