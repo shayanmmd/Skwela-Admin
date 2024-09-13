@@ -77,10 +77,21 @@
                     </ul>
                 </li>
 
+                <li class="nav-item menu-open">
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('contact-page')}}" class="nav-link">
+                                <i class="fa fa-phone nav-icon"></i>
+                                <p>Contact</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
 
             </ul>
         </nav>
     </div>
 
-    
+
 </aside>

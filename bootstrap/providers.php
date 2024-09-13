@@ -1,5 +1,6 @@
 <?php
 
+use Contact\Providers\ContactProvider;
 use Courses\Providers\CoursesProvider;
 use Dashboard\Providers\DashboardProvider;
 use Navlinks\Providers\NavlinksProvider;
@@ -13,5 +14,6 @@ return [
     UserProvider::class,
     RolePermissionProvider::class,
     Spatie\Permission\PermissionServiceProvider::class,
-    CoursesProvider::class
+    CoursesProvider::class,
+    ContactProvider::class
 ];

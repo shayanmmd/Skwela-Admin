@@ -28,6 +28,7 @@
             "User\\": "modules/User/",
             "Permissions\\": "modules/Permissions/",
             "Courses\\": "modules/Courses/",
+            "Contact\\": "modules/Contact/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
