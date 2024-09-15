@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('navlinks', function (Blueprint $blueprint) {
-            $blueprint->id();
-            $blueprint->string('name', 50);
-            $blueprint->bigInteger('parentId')->unsigned()->nullable();
+        Schema::create('navlinks', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 50);
+            $table->bigInteger('parentId')->unsigned()->nullable();
+            $table->string('link')->nullable();
 
-            $blueprint->foreign('parentId')->references('id')->on('navlinks')->onDelete('set null');
+            $table->foreign('parentId')->references('id')->on('navlinks')->onDelete('set null');
         });
     }
 

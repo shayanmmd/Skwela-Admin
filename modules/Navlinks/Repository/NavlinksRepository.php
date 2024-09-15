@@ -12,7 +12,7 @@ class NavlinksRepository
         try {
             return DB::table('navlinks as child')
                 ->leftJoin('navlinks as parent', 'child.parentId', '=', 'parent.id')
-                ->select('child.id', 'child.name as name', 'parent.name as parentName')
+                ->select('child.id', 'child.link' , 'child.name as name', 'parent.name as parentName')
                 ->get();
         } catch (\Throwable $th) {
             throw $th;
@@ -41,27 +41,29 @@ class NavlinksRepository
         }
     }
 
-    public function add($name, $parentId)
+    public function add($name, $parentId, $link)
     {
         try {
             return Db::table('navlinks')
                 ->insert([
                     'name' => $name,
-                    'parentId' => $parentId
+                    'parentId' => $parentId,
+                    'link' => $link
                 ]);
         } catch (\Throwable $th) {
             throw $th;
         }
     }
 
-    public function edit($id, $name, $parentId)
+    public function edit($id, $name, $parentId, $link)
     {
         try {
             return Db::table('navlinks')
                 ->where('navlinks.id', '=', $id)
                 ->update([
                     'name' => $name,
-                    'parentId' => $parentId
+                    'parentId' => $parentId,
+                    'link' => $link
                 ]);
         } catch (\Throwable $th) {
             throw $th;
@@ -72,7 +74,7 @@ class NavlinksRepository
     {
         try {
             return Db::table('navlinks')
-                ->select('navlinks.name', 'navlinks.parentId')
+                ->select('navlinks.name', 'navlinks.parentId', 'navlinks.link')
                 ->where('navlinks.id', '=', $id)
                 ->first();
         } catch (\Throwable $th) {

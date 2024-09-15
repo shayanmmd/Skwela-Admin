@@ -55,8 +55,8 @@ class NavlinksController
             if ($payload['parentId'] === 'null')
                 $payload['parentId'] = null;
 
-            $res =  $this->navlinksRepository->add($payload['name'], $payload['parentId']);
-            
+            $res =  $this->navlinksRepository->add($payload['name'], $payload['parentId'], $payload['link']);
+
             if (!$res)
                 return;
 
@@ -78,8 +78,8 @@ class NavlinksController
             if ($payload['parentId'] === 'null')
                 $payload['parentId'] = null;
 
-            $res =  $this->navlinksRepository->edit($payload['id'],$payload['name'], $payload['parentId']);
-
+            $res =  $this->navlinksRepository->edit($payload['id'], $payload['name'], $payload['parentId'], $payload['link']);            
+            
             if (!$res)
                 return;
 
@@ -90,14 +90,15 @@ class NavlinksController
     }
 
     public function editShow()
-    {   
+    {
         $id = request()->all()['id'];
 
         $navlink = $this->navlinksRepository->getById($id);
 
         return response()->json([
             'name' => $navlink->name,
-            'parentId' => $navlink->parentId
+            'parentId' => $navlink->parentId,
+            'link' => $navlink->link
         ]);
     }
 }

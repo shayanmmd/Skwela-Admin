@@ -56,6 +56,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
+                                        <th>Link</th>
                                         <th>Parent</th>
                                         <th class="d-flex justify-content-center">Operation</th>
                                     </tr>
@@ -63,8 +64,9 @@
                                 <tbody>
                                     @foreach($navlinks as $navlink)
                                     <tr>
-                                        ‍ <td>{{$navlink->id}}</td>
+                                        <td>{{$navlink->id}}</td>
                                         <td>{{$navlink->name}}</td>
+                                        <td>{{$navlink->link}}</td>
                                         <td>@if ($navlink->parentName == null)
                                             -
                                             @else
@@ -115,6 +117,10 @@ Add
             <input id="name" class="form-control" name="name" type="text" placeholder="Name...">
         </div>
 
+        <div class="row">
+            <input id="link" class="form-control mt-2" name="link" type="text" placeholder="Link...">
+        </div>
+
         <div class="row mt-2">
             <select id="parentId" name="parentId" class="form-select form-select-lg w-100">
                 <option selected value="null">-</option>
@@ -160,6 +166,10 @@ Edit
             <input id="name-edit" class="form-control" name="name-edit" type="text" placeholder="Name...">
         </div>
 
+        <div class="row">
+            <input id="link-edit" class="form-control" name="name-edit" type="text" placeholder="Link...">
+        </div>
+
         <div class="row mt-2">
             <select id="parentId-edit" name="parentId-edit" class="form-select form-select-lg w-100">
                 <option selected value="null">-</option>
@@ -194,10 +204,12 @@ Edit
 
         let name = $('#name').val();
         let parentId = $('#parentId').val();
+        let link = $('#link').val();
 
         let newNavlink = {
             name: name,
             parentId: parentId,
+            link:link,
             _token: '{{csrf_token()}}'
         }
 
@@ -225,11 +237,13 @@ Edit
         let id = $('#id-edit').val();
         let name = $('#name-edit').val();
         let parentId = $('#parentId-edit').val();
+        let link = $('#link-edit').val();
 
         newNavlink = {
             id: id,
             name: name,
             parentId: parentId,
+            link:link,
             _token: '{{csrf_token()}}'
         }
 
@@ -263,8 +277,11 @@ Edit
             },
             dataType: "json",
             success: function(response) {
-                $('#name-edit').val(response.name);
+
+                $('#name-edit').val(response.name);                
+                $('#link-edit').val(response.link);
                 $('#id-edit').val(id);
+
                 if (response.parentId === null) {
                     $('#parentId-edit').val('null');
                 } else {
