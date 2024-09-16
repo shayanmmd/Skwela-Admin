@@ -53,7 +53,7 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Message</th>
-                                    <th>created_at</th>
+                                    <th>Date</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -81,10 +81,5 @@
     </div>
 
 </section>
-
-@endsection
-
-
-@section('customScripts')
 
 @endsection

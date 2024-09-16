@@ -12,5 +12,6 @@ class UserProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../Resourses/Views/', 'UserViews');
         $this->loadViewsFrom(__DIR__ . '/../Resourses/Components/', 'UserComponents');
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations/');
+        
     }
 }

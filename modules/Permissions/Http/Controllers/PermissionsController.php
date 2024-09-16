@@ -2,25 +2,28 @@
 
 namespace Permissions\Http\Controllers;
 
-use Spatie\Permission\Models\Permission;
+use Permissions\Contracts\PermissionRepositoryInterface;
 
 class PermissionsController
 {
+
+    public function __construct(
+        private PermissionRepositoryInterface $permissionRepositoryInterface
+    ) {}
+
     public function index()
     {
-        $permissions = Permission::all();
-
+        $permissions = $this->permissionRepositoryInterface->all();
+        
         return response()->json($permissions);
     }
 
-    public function add()
+    public function store()
     {
-        $name = request()->all()['name'];
+        $payload = request()->all();
 
-        Permission::create([
-            'name' => $name
-        ]);
+        $this->permissionRepositoryInterface->store($payload);
 
         return response()->json(['success' => true, 'msg' => 'it it made']);
-    }   
+    }
 }

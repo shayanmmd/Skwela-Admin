@@ -200,7 +200,7 @@ Add a permission
             url: "{{route('get-permissions')}}",
             dataType: "json",
             success: function(response) {
-
+              
                 if (!$('#all-permissions').empty())
                     return;
 
