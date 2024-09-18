@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name', 50);
             $table->bigInteger('parentId')->unsigned()->nullable();
             $table->string('link')->nullable();
+            $table->timestamps();
 
             $table->foreign('parentId')->references('id')->on('navlinks')->onDelete('set null');
         });

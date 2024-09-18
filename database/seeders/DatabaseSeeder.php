@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Navlinks\Database\Seeders\NavlinksSeeder;
 use Permissions\Database\Seeders\RoleSeeder;
 use User\Database\Seeders\UserSeeder;
 
@@ -15,5 +16,6 @@ class DatabaseSeeder extends Seeder
     {
        $this->call(class: RoleSeeder::class);
        $this->call(UserSeeder::class);
+       $this->call(NavlinksSeeder::class);
     }
 }
