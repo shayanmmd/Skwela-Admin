@@ -3,6 +3,8 @@
 namespace User\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use User\Contracts\UserRepositoryInterface;
+use User\Repositories\UserRepository;
 
 class UserProvider extends ServiceProvider
 {
@@ -12,6 +14,10 @@ class UserProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../Resourses/Views/', 'UserViews');
         $this->loadViewsFrom(__DIR__ . '/../Resourses/Components/', 'UserComponents');
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations/');
-        
+    }
+
+    public function boot()
+    {
+        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }
 }

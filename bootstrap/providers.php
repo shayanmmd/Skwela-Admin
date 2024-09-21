@@ -3,6 +3,7 @@
 use Contact\Providers\ContactProvider;
 use Courses\Providers\CoursesProvider;
 use Dashboard\Providers\DashboardProvider;
+use Media\Providers\MediaProvider;
 use Navlinks\Providers\NavlinksProvider;
 use Permissions\Providers\RolePermissionProvider;
 use User\Providers\UserProvider;
@@ -15,5 +16,6 @@ return [
     RolePermissionProvider::class,
     Spatie\Permission\PermissionServiceProvider::class,
     CoursesProvider::class,
-    ContactProvider::class
+    ContactProvider::class,
+    MediaProvider::class
 ];

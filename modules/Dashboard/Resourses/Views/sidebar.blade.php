@@ -1,3 +1,7 @@
+{{$media = Media\Http\Models\Media::where('id', '=', Auth::user()->media_id)->first()}}
+
+
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{route('home-page')}}" class="brand-link">
@@ -10,7 +14,12 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                @if ($media)
+                <img src="{{url('storage/' . $media->name . '.' . $media->extension)}}" class="img-circle elevation-2" alt="User Image">                
+                @else
+                <img src="dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">                
+                @endif
+                
             </div>
             <div class="info">
                 <a href="" class="d-block">{{Auth::user()->name}}</a>
@@ -83,6 +92,17 @@
                             <a href="{{route('contact-page')}}" class="nav-link">
                                 <i class="fa fa-phone nav-icon"></i>
                                 <p>Contact</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item menu-open">
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('profile-page')}}" class="nav-link">
+                                <i class="fa fa-user nav-icon"></i>
+                                <p>Profile</p>
                             </a>
                         </li>
                     </ul>
