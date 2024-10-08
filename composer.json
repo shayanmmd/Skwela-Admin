@@ -30,6 +30,7 @@
             "Courses\\": "modules/Courses/",
             "Contact\\": "modules/Contact/",
             "Media\\": "modules/Media/",
+            "Blogs\\": "modules/Blogs/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

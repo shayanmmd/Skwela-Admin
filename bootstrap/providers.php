@@ -1,5 +1,6 @@
 <?php
 
+use Blogs\Providers\BlogProvider;
 use Contact\Providers\ContactProvider;
 use Courses\Providers\CoursesProvider;
 use Dashboard\Providers\DashboardProvider;
@@ -17,5 +18,6 @@ return [
     Spatie\Permission\PermissionServiceProvider::class,
     CoursesProvider::class,
     ContactProvider::class,
-    MediaProvider::class
+    MediaProvider::class,
+    BlogProvider::class
 ];

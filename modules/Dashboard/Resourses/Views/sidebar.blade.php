@@ -15,14 +15,14 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 @if ($media)
-                <img src="{{url('storage/' . $media->name . '.' . $media->extension)}}" class="img-circle elevation-2" alt="User Image">                
+                <img src="{{url('storage/' . $media->name . '.' . $media->extension)}}" class="img-circle elevation-2" alt="User Image">
                 @else
-                <img src="dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">                
+                <img src="dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
                 @endif
-                
+
             </div>
             <div class="info">
-                <a href="" class="d-block">{{Auth::user()->name}}</a>
+                <a href="{{route('profile-page')}}" class="d-block">{{Auth::user()->name}}</a>
             </div>
         </div>
 
@@ -93,6 +93,25 @@
                                 <i class="fa fa-phone nav-icon"></i>
                                 <p>Contact</p>
                             </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a href="#" class="nav-link">
+                        <i class="fa fa-print nav-icon"></i>
+                        <p>Blogs</p>
+                    </a>
+                    
+                    <ul class="nav nav-treeview">
+                        <li class="nav-iten">
+                            <a href="{{route('create-blog')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add</p>
+                            </a>
+
                         </li>
                     </ul>
                 </li>
